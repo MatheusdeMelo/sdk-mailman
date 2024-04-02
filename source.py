@@ -77,4 +77,24 @@ elif sys.argv[1] == "secretsmanager":
         print(response['SecretList'][count]['Name'])
         count +=1
 
+elif sys.argv[1] == "route53":
+    session = boto3.session.Session(profile_name=f'{sys.argv[3]}')
+    route53_client = session.client('route53', region_name=f'{sys.argv[2]}')
+    response = route53_client.list_hosted_zones_by_name()
+    count = 0
+    lenHZ = len(response['HostedZones'])
+    while count < lenHZ:
+        print(response['HostedZones'][count]['Name'])
+        count +=1
+
+elif sys.argv[1] == "cloudfront":
+    session = boto3.session.Session(profile_name=f'{sys.argv[3]}')
+    cloudfront_client = session.client('cloudfront', region_name=f'{sys.argv[2]}')
+    response = cloudfront_client.list_distributions()
+    count = 0
+    lenD = len(response['DistributionList']['Items'])
+    while count < lenD:
+        print(f'{response['DistributionList']['Items'][count]['Id']} - {response['DistributionList']['Items'][count]['DomainName']}')
+        count +=1
+
 print("Let's do it!")
