@@ -97,4 +97,34 @@ elif sys.argv[1] == "cloudfront":
         print(f'{response['DistributionList']['Items'][count]['Id']} - {response['DistributionList']['Items'][count]['DomainName']}')
         count +=1
 
-print("Let's do it!")
+elif sys.argv[1] == "lambda":
+    session = boto3.session.Session(profile_name=f'{sys.argv[3]}')
+    lambda_client = session.client('lambda', region_name=f'{sys.argv[2]}')
+    response = lambda_client.list_functions()
+    count = 0
+    lenF = len(response['Functions'])
+    while count < lenF:
+        print(f'{response['Functions'][count]['FunctionName']} - {response['Functions'][count]['Runtime']}')
+        count +=1
+
+elif sys.argv[1] == "iam":
+    session = boto3.session.Session(profile_name=f'{sys.argv[3]}')
+    iam_client = session.client('iam', region_name=f'{sys.argv[2]}')
+    response = iam_client.list_users()
+    count = 0
+    lenI = len(response['Users'])
+    while count < lenI:
+        print(response['Users'][count]['UserName'])
+        count +=1
+
+elif sys.argv[1] == "ecr":
+    session = boto3.session.Session(profile_name=f'{sys.argv[3]}')
+    ecr_client = session.client('ecr', region_name=f'{sys.argv[2]}')
+    response = ecr_client.describe_repositories()
+    count = 0
+    lenR = len(response['repositories'])
+    while count < lenR:
+        print(f'{response['repositories'][count]['repositoryName']} - {response['repositories'][count]['repositoryUri']}')
+        count +=1
+
+print("\nLet's do it!")

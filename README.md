@@ -11,6 +11,9 @@ Show resources in AWS accounts to facilitate troubleshooting.
 - **SecretsManager** (Secrets)
 - **Route53** (Hosted Zones)
 - **Cloudfront** (Ids and Domain Names)
+- **Lambda** (Functions and Runtime Languages)
+- **IAM** (Users)
+- **ECR** (Repositories)
 
 ### How to use
 To run locally you need to config [AWS profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) and install [Python SDK](https://github.com/boto/boto3).
