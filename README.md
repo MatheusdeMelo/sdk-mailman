@@ -14,6 +14,10 @@ Show resources in AWS accounts to facilitate troubleshooting.
 - **Lambda** (Functions and Runtime Languages)
 - **IAM** (Users)
 - **ECR** (Repositories)
+- **ACM** (Domain Names)
+- **Elasticache** (Cluster and Engine)
+- **WAF** (Web ACLs)
+- **CodeDeploy** (Applications)
 
 ### How to use
 To run locally you need to config [AWS profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) and install [Python SDK](https://github.com/boto/boto3).
