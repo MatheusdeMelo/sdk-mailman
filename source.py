@@ -51,10 +51,10 @@ elif sys.argv[1] == "rds":
     lenC = len(cluster_response['DBClusters'])
     lenI = len(instance_response['DBInstances'])
     while count < lenC:
-        print(f'Cluster - {cluster_response['DBClusters'][count]['DBClusterIdentifier']}')
+        print(f'Cluster - {cluster_response['DBClusters'][count]['DBClusterIdentifier']} > {cluster_response['DBClusters'][count]['Engine']}@{cluster_response['DBClusters'][count]['EngineVersion']} ')
         count +=1
     while count < lenI:
-        print(f'Instance - {instance_response['DBInstances'][count]['DBInstanceIdentifier']}')
+        print(f'Instance - {instance_response['DBInstances'][count]['DBInstanceIdentifier']} > {instance_response['DBInstances'][count]['Engine']}@{instance_response['DBInstances'][count]['EngineVersion']}')
         count +=1
 
 elif sys.argv[1] == "codebuild":
