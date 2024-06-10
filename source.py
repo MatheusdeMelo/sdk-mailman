@@ -15,10 +15,12 @@ elif sys.argv[1] == "ec2":
     lenT = len(response['Reservations'])
     count = 0
     while count < lenT:
-        lenB = len(response['Reservations'][count]['Instances'][0]['Tags'])
-        for tag in response['Reservations'][count]['Instances'][0]['Tags']:
-            if tag['Key'] == 'Name':
-                print(f"{count+1}- {tag['Value']}")
+        if 'Tags' in response['Reservations'][count]['Instances'][0]:
+            for tag in response['Reservations'][count]['Instances'][0]['Tags']:
+                if tag['Key'] == 'Name':
+                    print(f"{count+1}- {tag['Value']} <-> {response['Reservations'][count]['Instances'][0]['InstanceType']}@{response['Reservations'][count]['Instances'][0]['State']['Name']}")
+        else:
+            print(f"{count+1}- null <-> {response['Reservations'][count]['Instances'][0]['InstanceType']}@{response['Reservations'][count]['Instances'][0]['State']['Name']}")
         count +=1
 
 elif sys.argv[1] == "elb":
@@ -165,6 +167,17 @@ elif sys.argv[1] == "codedeploy":
     lenA = len(response['applications'])
     while count < lenA:
         print(f'{count+1}- {response['applications'][count]}')
+        count +=1
+
+elif sys.argv[1] == "sqs":
+    session = boto3.session.Session(profile_name=f'{sys.argv[3]}')
+    sqs_client = session.client('sqs', region_name=f'{sys.argv[2]}')
+    response = sqs_client.list_queues()
+    #print(f'Show me the response: {response['QueueUrls'][0].split("/")[4]}')
+    count = 0
+    lenQ = len(response['QueueUrls'])
+    while count < lenQ:
+        print(f'{count+1}- {response['QueueUrls'][count].split("/")[4]} <-> {response['QueueUrls'][count]}')
         count +=1
 
 print("\nLet's do it!")
