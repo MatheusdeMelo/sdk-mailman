@@ -3,7 +3,7 @@ Show resources in AWS accounts to facilitate troubleshooting.
 
 ### Available Services
 - **S3** (Buckets)
-- **EC2** (Instances)
+- **EC2** (Instances: Identifiers, Types and States)
 - **ELB** (Load balancers)
 - **ECS** (Containers)
 - **RDS** (Instances and Clusters)
@@ -15,9 +15,10 @@ Show resources in AWS accounts to facilitate troubleshooting.
 - **IAM** (Users)
 - **ECR** (Repositories)
 - **ACM** (Domain Names)
-- **Elasticache** (Cluster and Engine)
+- **Elasticache** (Clusters and Engines)
 - **WAF** (Web ACLs)
 - **CodeDeploy** (Applications)
+- **SQS** (Queue Urls)
 
 ### How to use
 To run locally you need to config [AWS profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) and install [Python SDK](https://github.com/boto/boto3).
