@@ -4,7 +4,7 @@ Show resources in AWS accounts to facilitate troubleshooting.
 ### Available Services
 - **S3** (Buckets)
 - **EC2** (Instances: Identifiers, Types and States)
-- **ELB** (Load balancers)
+- **ELB** (Load balancers: Identifiers, DNS and Types)
 - **ECS** (Containers)
 - **RDS** (Instances and Clusters)
 - **CodeBuild** (Projects)
