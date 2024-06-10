@@ -30,7 +30,7 @@ elif sys.argv[1] == "elb":
     lenLB = len(response['LoadBalancers'])
     count = 0
     while count < lenLB:
-        print(f"{count+1}- {response['LoadBalancers'][count]['LoadBalancerName']}")
+        print(f"{count+1}- {response['LoadBalancers'][count]['LoadBalancerName']} <-> {response['LoadBalancers'][count]['DNSName']}@{response['LoadBalancers'][count]['Type']}")
         count +=1
 
 elif sys.argv[1] == "ecs":
