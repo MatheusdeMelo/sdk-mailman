@@ -62,11 +62,12 @@ elif sys.argv[1] == "rds":
 elif sys.argv[1] == "codebuild":
     session = boto3.session.Session(profile_name=f'{sys.argv[3]}')
     codebuild_client = session.client('codebuild', region_name=f'{sys.argv[2]}')
-    response = codebuild_client.list_projects()
+    search = codebuild_client.list_projects()
     count = 0
-    lenP = len(response['projects'])
+    lenP = len(search['projects'])
     while count < lenP:
-        print(f"{count+1}- {response['projects'][count]}")
+        response = codebuild_client.batch_get_projects(names=[search['projects'][count]])
+        print(f"{count+1}- {response['projects'][0]['name']} <-> {response['projects'][0]['source']['location']}")
         count +=1
 
 elif sys.argv[1] == "secretsmanager":
